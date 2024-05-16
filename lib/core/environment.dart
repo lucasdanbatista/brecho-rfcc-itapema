@@ -1,13 +1,18 @@
+import 'package:flutter/foundation.dart';
+
 abstract interface class Environment {
   Uri get apiBaseUrl;
+
+  factory Environment.auto() =>
+      kReleaseMode ? ProductionEnvironment() : StagingEnvironment();
 }
 
-class DebugEnvironment implements Environment {
+class ProductionEnvironment implements Environment {
   @override
-  Uri get apiBaseUrl {
-    const key = 'DEBUG_API_BASE_URL';
-    return const bool.hasEnvironment(key)
-        ? Uri.parse(const String.fromEnvironment(key))
-        : Uri.parse('https://api.staging.vienna.lucasbatista.me');
-  }
+  final apiBaseUrl = Uri.parse('https://rfccitapema.lucasbatista.me');
+}
+
+class StagingEnvironment implements Environment {
+  @override
+  final apiBaseUrl = Uri.parse(const String.fromEnvironment('API_BASE_URL'));
 }

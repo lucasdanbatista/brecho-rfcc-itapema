@@ -13,7 +13,7 @@ import 'repositories/product_repository.dart';
 class CoreModule implements Module {
   @override
   Future<void> init(GetIt i) async {
-    i.registerLazySingleton<Environment>(() => DebugEnvironment());
+    i.registerLazySingleton(() => Environment.auto());
     i.registerLazySingleton<AuthManager>(
       () => DefaultAuthManager(i.get(), i.get()),
     );
