@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../providers/customer_provider.dart';
 
@@ -20,15 +20,15 @@ class DefaultAuthManager implements AuthManager {
   static const _accessTokenKey = 'customer.accessToken';
 
   final CustomerProvider _provider;
-  final FlutterSecureStorage _secureStorage;
   final Dio _httpClient;
 
-  DefaultAuthManager(this._httpClient, this._provider, this._secureStorage);
+  DefaultAuthManager(this._httpClient, this._provider);
 
   @override
   Future<void> signIn(String email, String password) async {
     final token = await _provider.signIn(email, password);
-    await _secureStorage.write(key: _accessTokenKey, value: token.accessToken);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_accessTokenKey, token.accessToken);
     await loadCredentials();
   }
 
@@ -41,12 +41,14 @@ class DefaultAuthManager implements AuthManager {
   @override
   Future<void> signOut() async {
     _setAuthorizationHeader(null);
-    await _secureStorage.deleteAll();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
   }
 
   @override
   Future<void> loadCredentials() async {
-    final accessToken = await _secureStorage.read(key: _accessTokenKey);
+    final prefs = await SharedPreferences.getInstance();
+    final accessToken = prefs.getString(_accessTokenKey);
     _setAuthorizationHeader(accessToken != null ? 'Bearer $accessToken' : null);
   }
 

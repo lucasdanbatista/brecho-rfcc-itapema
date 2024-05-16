@@ -5,11 +5,8 @@ import 'package:get_it/get_it.dart';
 
 import '../../utils/formatters/currency_formatter.dart';
 import '../../utils/init_state_mixin.dart';
-import '../../utils/router.dart';
-import '../../utils/router.gr.dart';
 import '../../widgets/icon_buttons/cart_icon_button.dart';
 import '../cart/cart_view_model.dart';
-import '../wishlist/wishlist_view_model.dart';
 import 'product_details_view_model.dart';
 
 @RoutePage()
@@ -17,7 +14,6 @@ class ProductDetailsPage extends StatelessWidget with InitStateMixin {
   final String productId;
   final productViewModel = GetIt.I<ProductDetailsViewModel>();
   final cartViewModel = GetIt.I<CartViewModel>();
-  final wishlistViewModel = GetIt.I<WishlistViewModel>();
 
   ProductDetailsPage({
     super.key,
@@ -47,37 +43,6 @@ class ProductDetailsPage extends StatelessWidget with InitStateMixin {
           appBar: AppBar(
             title: const Text('Detalhes do produto'),
             actions: [
-              Observer(
-                builder: (context) => IconButton(
-                  onPressed: () async {
-                    await wishlistViewModel.toggleFavorite(product);
-                    if (wishlistViewModel.isFavorite(product) &&
-                        context.mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          backgroundColor: Colors.green,
-                          duration: const Duration(seconds: 5),
-                          action: SnackBarAction(
-                            label: 'VER LISTA',
-                            textColor: Colors.white,
-                            onPressed: () => router.push(WishlistRoute()),
-                          ),
-                          content: Text(
-                            'Adicionado aos favoritos.',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(color: Colors.white),
-                          ),
-                        ),
-                      );
-                    }
-                  },
-                  isSelected: wishlistViewModel.isFavorite(product),
-                  icon: const Icon(Icons.favorite_border),
-                  selectedIcon: const Icon(Icons.favorite),
-                ),
-              ),
               CartIconButton(),
             ],
           ),

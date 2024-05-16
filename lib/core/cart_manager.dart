@@ -1,4 +1,4 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'entities/cart.dart';
 import 'repositories/cart_repository.dart';
@@ -17,11 +17,10 @@ abstract interface class CartManager {
 
 class DefaultCartManager implements CartManager {
   static const _cartKey = 'cart.id';
-  final FlutterSecureStorage _secureStorage;
   late Cart _currentCart;
   final CartRepository _repository;
 
-  DefaultCartManager(this._repository, this._secureStorage);
+  DefaultCartManager(this._repository);
 
   @override
   Cart get currentCart => _currentCart;
@@ -29,12 +28,14 @@ class DefaultCartManager implements CartManager {
   @override
   Future<void> initializeNewCart() async {
     _currentCart = await _repository.create();
-    await _secureStorage.write(key: _cartKey, value: _currentCart.id);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_cartKey, _currentCart.id);
   }
 
   @override
   Future<void> loadCurrentCart() async {
-    final cartId = await _secureStorage.read(key: _cartKey);
+    final prefs = await SharedPreferences.getInstance();
+    final cartId = prefs.getString(_cartKey);
     if (cartId == null) {
       await initializeNewCart();
       await loadCurrentCart();

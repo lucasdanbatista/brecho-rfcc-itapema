@@ -12,7 +12,7 @@ CartLineDTO _$CartLineDTOFromJson(Map<String, dynamic> json) => CartLineDTO(
           ? null
           : ProductVariantDTO.fromJson(
               json['productVariant'] as Map<String, dynamic>),
-      quantity: json['quantity'] as int?,
+      quantity: (json['quantity'] as num?)?.toInt(),
       total: (json['total'] as num?)?.toDouble(),
     );
 

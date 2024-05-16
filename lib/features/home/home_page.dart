@@ -57,12 +57,6 @@ class HomePage extends StatelessWidget with InitStateMixin {
                   ),
                   ListTile(
                     style: ListTileStyle.drawer,
-                    title: const Text('Meus favoritos'),
-                    leading: const Icon(Icons.favorite_outline),
-                    onTap: () => context.pushRoute(WishlistRoute()),
-                  ),
-                  ListTile(
-                    style: ListTileStyle.drawer,
                     title: const Text('Categorias'),
                     leading: const Icon(Icons.category_outlined),
                     onTap: () => context.pushRoute(const CategoriesRoute()),
