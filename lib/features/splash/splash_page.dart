@@ -2,24 +2,20 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../core/auth_manager.dart';
+import '../../core/cart_manager.dart';
 import '../../utils/assets.dart';
-import '../../utils/cron.dart';
 import '../../utils/init_state_mixin.dart';
 import '../../utils/router.dart';
 import '../../utils/router.gr.dart';
 
 @RoutePage()
 class SplashPage extends StatelessWidget with InitStateMixin {
-  final authManager = GetIt.I<AuthManager>();
-
   SplashPage({super.key});
 
   @override
   void initState() async {
-    await Future.delayed(1.seconds);
-    final route = authManager.isAuthenticated ? HomeRoute() : SignInRoute();
-    router.replace(route as PageRouteInfo);
+    await GetIt.I<CartManager>().loadCurrentCart();
+    router.replace(HomeRoute());
   }
 
   @override

@@ -27,7 +27,12 @@ class DefaultCartManager implements CartManager {
 
   @override
   Future<void> initializeNewCart() async {
-    _currentCart = await _repository.create();
+    _currentCart = Cart.lazy(
+      id: '1',
+      lines: [],
+      subtotal: 0,
+      total: 0,
+    );
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_cartKey, _currentCart.id);
   }

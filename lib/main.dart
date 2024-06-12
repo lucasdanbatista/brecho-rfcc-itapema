@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
+import 'package:vienna/core/cart_manager.dart';
 
-import 'core/auth_manager.dart';
-import 'core/cart_manager.dart';
 import 'core/core_module.dart';
 import 'core/module.dart';
 import 'features/banner_details/banner_details_module.dart';
@@ -14,7 +13,6 @@ import 'features/home/home_module.dart';
 import 'features/orders/orders_module.dart';
 import 'features/product_details/product_details_module.dart';
 import 'features/search/search_module.dart';
-import 'features/sign_in/sign_in_module.dart';
 import 'mappers/mappers_module.dart';
 import 'providers/providers_module.dart';
 import 'utils/router.dart';
@@ -26,7 +24,6 @@ Future<void> main() async {
     CoreModule(),
     MappersModule(),
     ProvidersModule(),
-    SignInModule(),
     CategoriesModule(),
     CategoryDetailsModule(),
     ProductDetailsModule(),
@@ -36,11 +33,6 @@ Future<void> main() async {
     HomeModule(),
     BannerDetailsModule(),
   ]);
-  final authManager = GetIt.I<AuthManager>();
-  await authManager.loadCredentials();
-  if (authManager.isAuthenticated) {
-    await GetIt.I<CartManager>().loadCurrentCart();
-  }
   runApp(const MainApp());
 }
 

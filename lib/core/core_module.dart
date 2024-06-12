@@ -1,6 +1,5 @@
 import 'package:get_it/get_it.dart';
 
-import 'auth_manager.dart';
 import 'cart_manager.dart';
 import 'environment.dart';
 import 'module.dart';
@@ -14,9 +13,6 @@ class CoreModule implements Module {
   @override
   Future<void> init(GetIt i) async {
     i.registerLazySingleton(() => Environment.auto());
-    i.registerLazySingleton<AuthManager>(
-      () => DefaultAuthManager(i.get(), i.get()),
-    );
     i.registerLazySingleton<CartManager>(
       () => DefaultCartManager(i.get()),
     );

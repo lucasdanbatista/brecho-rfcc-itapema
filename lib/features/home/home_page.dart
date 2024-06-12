@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../core/auth_manager.dart';
 import '../../utils/assets.dart';
 import '../../utils/init_state_mixin.dart';
 import '../../utils/router.gr.dart';
@@ -17,7 +16,6 @@ import 'home_view_model.dart';
 class HomePage extends StatelessWidget with InitStateMixin {
   final categoriesViewModel = GetIt.I<CategoriesViewModel>();
   final homeViewModel = GetIt.I<HomeViewModel>();
-  final authManager = GetIt.I<AuthManager>();
 
   HomePage({super.key});
 
@@ -51,50 +49,11 @@ class HomePage extends StatelessWidget with InitStateMixin {
                   ),
                   ListTile(
                     style: ListTileStyle.drawer,
-                    title: const Text('Meus pedidos'),
-                    leading: const Icon(Icons.receipt_long_outlined),
-                    onTap: () => context.pushRoute(OrdersRoute()),
-                  ),
-                  ListTile(
-                    style: ListTileStyle.drawer,
                     title: const Text('Categorias'),
                     leading: const Icon(Icons.category_outlined),
                     onTap: () => context.pushRoute(const CategoriesRoute()),
                   ),
                 ],
-              ),
-            ),
-            Expanded(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: TextButton.icon(
-                  icon: const Icon(Icons.logout),
-                  onPressed: () => showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: const Text('Sair da sua conta?'),
-                      content: const Text(
-                        'Você será redirecionado para a página de login.',
-                      ),
-                      actions: [
-                        TextButton(
-                          onPressed: () async {
-                            await authManager.signOut();
-                            if (context.mounted) {
-                              context.replaceRoute(SignInRoute());
-                            }
-                          },
-                          child: const Text('SIM'),
-                        ),
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: const Text('NÃO'),
-                        ),
-                      ],
-                    ),
-                  ),
-                  label: const Text('SAIR'),
-                ),
               ),
             ),
           ],
