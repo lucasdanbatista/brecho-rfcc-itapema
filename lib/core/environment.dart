@@ -1,10 +1,7 @@
-import 'package:flutter/foundation.dart';
-
 abstract interface class Environment {
   Uri get apiBaseUrl;
 
-  factory Environment.auto() =>
-      kReleaseMode ? ProductionEnvironment() : StagingEnvironment();
+  factory Environment.auto() => ProductionEnvironment();
 }
 
 class ProductionEnvironment implements Environment {
