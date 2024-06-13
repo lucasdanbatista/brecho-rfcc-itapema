@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
-import 'package:vienna/core/cart_manager.dart';
 
 import 'core/core_module.dart';
 import 'core/module.dart';
