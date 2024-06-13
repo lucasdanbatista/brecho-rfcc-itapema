@@ -1,6 +1,3 @@
-import '../../dtos/cart_line_dto.dart';
-import '../../mappers/cart_mapper.dart';
-import '../../providers/cart_provider.dart';
 import '../entities/cart.dart';
 
 abstract interface class CartRepository {
@@ -20,34 +17,38 @@ abstract interface class CartRepository {
   });
 }
 
-class DefaultCartRepository implements CartRepository {
-  final CartProvider _provider;
-  final CartMapper _mapper;
-
-  DefaultCartRepository(this._provider, this._mapper);
-
-  @override
-  Future<Cart> create() async {
-    final response = await _provider.createCart();
-    return _mapper.toEntity(response);
-  }
-
-  @override
-  Future<Cart> getCartById(String id) async {
-    final response = await _provider.getCartById(id);
-    return _mapper.toEntity(response);
-  }
-
+class MockedCartRepository implements CartRepository {
   @override
   Future<Cart> addCartLine({
     required String cartId,
     required String productVariantId,
   }) async {
-    final response = await _provider.addCartLine(
-      cartId: cartId,
-      productVariantId: productVariantId,
+    return Cart.lazy(
+      id: cartId,
+      lines: [],
+      subtotal: 0,
+      total: 0,
     );
-    return _mapper.toEntity(response);
+  }
+
+  @override
+  Future<Cart> create() async {
+    return Cart.lazy(
+      id: '1',
+      lines: [],
+      subtotal: 0,
+      total: 0,
+    );
+  }
+
+  @override
+  Future<Cart> getCartById(String id) async {
+    return Cart.lazy(
+      id: id,
+      lines: [],
+      subtotal: 0,
+      total: 0,
+    );
   }
 
   @override
@@ -56,13 +57,11 @@ class DefaultCartRepository implements CartRepository {
     required String cartLineId,
     required int quantity,
   }) async {
-    final response = await _provider.updateCartLine(
-      cartId: cartId,
-      cartLine: CartLineDTO(
-        id: cartLineId,
-        quantity: quantity,
-      ),
+    return Cart.lazy(
+      id: cartId,
+      lines: [],
+      subtotal: 0,
+      total: 0,
     );
-    return _mapper.toEntity(response);
   }
 }

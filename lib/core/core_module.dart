@@ -25,9 +25,7 @@ class CoreModule implements Module {
     i.registerLazySingleton<HomeRepository>(
       () => DefaultHomeRepository(i.get(), i.get(), i.get()),
     );
-    i.registerLazySingleton<CartRepository>(
-      () => DefaultCartRepository(i.get(), i.get()),
-    );
+    i.registerLazySingleton<CartRepository>(() => MockedCartRepository());
     i.registerLazySingleton<OrderRepository>(
       () => DefaultOrderRepository(i.get(), i.get()),
     );
