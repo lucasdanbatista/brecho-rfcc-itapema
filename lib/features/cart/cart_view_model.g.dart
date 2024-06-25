@@ -32,9 +32,9 @@ mixin _$CartViewModel on CartViewModelBase, Store {
       AsyncAction('CartViewModelBase.addCartLine', context: context);
 
   @override
-  Future<void> addCartLine(String productVariantId) {
+  Future<void> addCartLine(String productId, ProductVariant productVariant) {
     return _$addCartLineAsyncAction
-        .run(() => super.addCartLine(productVariantId));
+        .run(() => super.addCartLine(productId, productVariant));
   }
 
   late final _$updateCartLineAsyncAction =

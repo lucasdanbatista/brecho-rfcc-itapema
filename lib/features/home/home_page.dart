@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
+import '../cart/cart_view_model.dart';
 import '../../utils/assets.dart';
 import '../../utils/init_state_mixin.dart';
 import '../../utils/router.gr.dart';
@@ -16,14 +17,15 @@ import 'home_view_model.dart';
 class HomePage extends StatelessWidget with InitStateMixin {
   final categoriesViewModel = GetIt.I<CategoriesViewModel>();
   final homeViewModel = GetIt.I<HomeViewModel>();
+  final cartViewModel = GetIt.I<CartViewModel>();
 
   HomePage({super.key});
 
   @override
-  void initState() {
-    homeViewModel.fetchBanners();
+  void initState() async {
     homeViewModel.fetchSections();
     categoriesViewModel.fetch();
+    cartViewModel.refreshCart();
   }
 
   @override
@@ -168,51 +170,6 @@ class HomePage extends StatelessWidget with InitStateMixin {
                   ),
                 ),
               ],
-            ),
-            const Padding(padding: EdgeInsets.only(top: 32)),
-            Observer(
-              builder: (context) => AspectRatio(
-                aspectRatio: 16 / 9,
-                child: PageView(
-                  controller: PageController(viewportFraction: 0.999),
-                  clipBehavior: Clip.none,
-                  scrollDirection: Axis.horizontal,
-                  children: homeViewModel.banners
-                      .map(
-                        (banner) => Padding(
-                          padding: EdgeInsets.only(
-                            right:
-                                banner != homeViewModel.banners.last ? 12 : 0,
-                          ),
-                          child: Container(
-                            clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(12),
-                              ),
-                              border: Border.all(
-                                color: Colors.grey.shade200,
-                                strokeAlign: BorderSide.strokeAlignOutside,
-                                width: 2,
-                              ),
-                            ),
-                            child: Material(
-                              child: Ink.image(
-                                image: NetworkImage(banner.image.toString()),
-                                fit: BoxFit.cover,
-                                child: InkWell(
-                                  onTap: () => context.pushRoute(
-                                    BannerDetailsRoute(banner: banner),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
-                      .toList(),
-                ),
-              ),
             ),
             const Padding(padding: EdgeInsets.only(top: 32)),
             Observer(

@@ -1,26 +1,24 @@
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'entities/cart.dart';
-import 'repositories/cart_repository.dart';
+import 'entities/cart_line.dart';
+import 'entities/product_variant.dart';
+import 'repositories/product_repository.dart';
 
 abstract interface class CartManager {
   Cart get currentCart;
 
   Future<void> initializeNewCart();
 
-  Future<void> loadCurrentCart();
-
-  Future<void> addCartLine(String productVariantId);
+  Future<void> addCartLine(String productId, ProductVariant productVariant);
 
   Future<void> updateCartLine(String cartLineId, int quantity);
 }
 
-class DefaultCartManager implements CartManager {
-  static const _cartKey = 'cart.id';
-  late Cart _currentCart;
-  final CartRepository _repository;
+class InMemoryCartManager implements CartManager {
+  final ProductRepository _productRepository;
 
-  DefaultCartManager(this._repository);
+  late Cart _currentCart;
+
+  InMemoryCartManager(this._productRepository);
 
   @override
   Cart get currentCart => _currentCart;
@@ -32,41 +30,46 @@ class DefaultCartManager implements CartManager {
       lines: [],
       subtotal: 0,
       total: 0,
+      checkoutUrl: Uri.parse('http://google.com'),
     );
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_cartKey, _currentCart.id);
   }
 
   @override
-  Future<void> loadCurrentCart() async {
-    final prefs = await SharedPreferences.getInstance();
-    final cartId = prefs.getString(_cartKey);
-    if (cartId == null) {
-      await initializeNewCart();
-      await loadCurrentCart();
-    } else {
-      try {
-        _currentCart = await _repository.getCartById(cartId);
-      } on Exception {
-        return initializeNewCart();
-      }
-    }
-  }
-
-  @override
-  Future<void> addCartLine(String productVariantId) async {
-    _currentCart = await _repository.addCartLine(
-      cartId: _currentCart.id,
-      productVariantId: productVariantId,
+  Future<void> addCartLine(
+    String productId,
+    ProductVariant productVariant,
+  ) async {
+    final product = await _productRepository.findById(productId);
+    _currentCart.lines.add(
+      CartLine.lazy(
+        id: productVariant.id,
+        productVariant: product.variants.firstWhere(
+          (e) => e.id == productVariant.id,
+        ),
+        quantity: 1,
+        total: productVariant.sellingPrice,
+      ),
     );
+    _updateCart();
   }
 
   @override
   Future<void> updateCartLine(String cartLineId, int quantity) async {
-    _currentCart = await _repository.updateCartLine(
-      cartId: _currentCart.id,
-      cartLineId: cartLineId,
-      quantity: quantity,
-    );
+    final cartLine = _currentCart.lines.firstWhere((e) => e.id == cartLineId);
+    if (quantity == 0) {
+      _currentCart.lines.remove(cartLine);
+    } else {
+      cartLine.quantity = quantity;
+    }
+    _updateCart();
+  }
+
+  void _updateCart() {
+    var subtotal = 0.0;
+    for (final line in _currentCart.lines) {
+      subtotal += line.total * line.quantity;
+    }
+    _currentCart.subtotal = subtotal;
+    _currentCart.total = subtotal;
   }
 }

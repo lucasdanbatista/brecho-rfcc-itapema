@@ -41,14 +41,6 @@ mixin _$HomeViewModel on HomeViewModelBase, Store {
     });
   }
 
-  late final _$fetchBannersAsyncAction =
-      AsyncAction('HomeViewModelBase.fetchBanners', context: context);
-
-  @override
-  Future<void> fetchBanners() {
-    return _$fetchBannersAsyncAction.run(() => super.fetchBanners());
-  }
-
   late final _$fetchSectionsAsyncAction =
       AsyncAction('HomeViewModelBase.fetchSections', context: context);
 

@@ -156,7 +156,10 @@ class ProductDetailsPage extends StatelessWidget with InitStateMixin {
           persistentFooterButtons: [
             TextButton.icon(
               onPressed: () async {
-                await cartViewModel.addCartLine(product.variants.first.id);
+                await cartViewModel.addCartLine(
+                  product.id,
+                  product.variants.first,
+                );
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(

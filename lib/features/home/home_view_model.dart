@@ -20,10 +20,6 @@ abstract class HomeViewModelBase with Store {
   List<HomeSection> sections = ObservableList();
 
   @action
-  Future<void> fetchBanners() async =>
-      banners = ObservableList.of(await _repository.getBanners());
-
-  @action
   Future<void> fetchSections() async =>
       sections = ObservableList.of(await _repository.getSections());
 }

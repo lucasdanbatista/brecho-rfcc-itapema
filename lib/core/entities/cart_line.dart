@@ -4,7 +4,7 @@ import 'product_variant.dart';
 class CartLine implements Entity {
   late final String id;
   late final ProductVariant productVariant;
-  late final int quantity;
+  int quantity = 0;
   late final double total;
 
   CartLine.lazy({

@@ -1,8 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 
-import '../../core/cart_manager.dart';
 import '../../utils/assets.dart';
 import '../../utils/init_state_mixin.dart';
 import '../../utils/router.dart';
@@ -14,7 +12,6 @@ class SplashPage extends StatelessWidget with InitStateMixin {
 
   @override
   void initState() async {
-    await GetIt.I<CartManager>().loadCurrentCart();
     router.replace(HomeRoute());
   }
 

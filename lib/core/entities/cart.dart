@@ -4,8 +4,8 @@ import 'entity.dart';
 class Cart implements Entity {
   late final String id;
   late final List<CartLine> lines;
-  late final double subtotal;
-  late final double total;
+  double subtotal = 0;
+  double total = 0;
   late final Uri checkoutUrl;
 
   Cart.lazy({

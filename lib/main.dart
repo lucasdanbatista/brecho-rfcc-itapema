@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
 
+import 'core/cart_manager.dart';
 import 'core/core_module.dart';
 import 'core/module.dart';
 import 'features/banner_details/banner_details_module.dart';
@@ -31,6 +33,7 @@ Future<void> main() async {
     HomeModule(),
     BannerDetailsModule(),
   ]);
+  await GetIt.I<CartManager>().initializeNewCart();
   runApp(const MainApp());
 }
 
