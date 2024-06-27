@@ -205,5 +205,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
   void _exitFromCheckout() => Navigator.of(context)
     ..pop()
     ..pop()
+    ..pop()
     ..pop();
 }

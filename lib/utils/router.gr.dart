@@ -8,11 +8,11 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i11;
-import 'package:flutter/material.dart' as _i12;
-import 'package:vienna/core/entities/home_banner.dart' as _i13;
-import 'package:vienna/core/entities/order.dart' as _i15;
-import 'package:vienna/core/entities/product_category.dart' as _i14;
+import 'package:auto_route/auto_route.dart' as _i10;
+import 'package:flutter/material.dart' as _i11;
+import 'package:vienna/core/entities/home_banner.dart' as _i12;
+import 'package:vienna/core/entities/order.dart' as _i14;
+import 'package:vienna/core/entities/product_category.dart' as _i13;
 import 'package:vienna/features/banner_details/banner_details_page.dart' as _i1;
 import 'package:vienna/features/cart/cart_page.dart' as _i2;
 import 'package:vienna/features/categories/categories_page.dart' as _i3;
@@ -24,16 +24,15 @@ import 'package:vienna/features/order_details/order_details_page.dart' as _i7;
 import 'package:vienna/features/orders/orders_page.dart' as _i8;
 import 'package:vienna/features/product_details/product_details_page.dart'
     as _i9;
-import 'package:vienna/features/splash/splash_page.dart' as _i10;
 
-abstract class $AppRouter extends _i11.RootStackRouter {
+abstract class $AppRouter extends _i10.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i11.PageFactory> pagesMap = {
+  final Map<String, _i10.PageFactory> pagesMap = {
     BannerDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<BannerDetailsRouteArgs>();
-      return _i11.AutoRoutePage<dynamic>(
+      return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i1.BannerDetailsPage(
           key: args.key,
@@ -44,20 +43,20 @@ abstract class $AppRouter extends _i11.RootStackRouter {
     CartRoute.name: (routeData) {
       final args =
           routeData.argsAs<CartRouteArgs>(orElse: () => const CartRouteArgs());
-      return _i11.AutoRoutePage<dynamic>(
+      return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i2.CartPage(key: args.key),
       );
     },
     CategoriesRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
+      return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i3.CategoriesPage(),
       );
     },
     CategoryDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<CategoryDetailsRouteArgs>();
-      return _i11.AutoRoutePage<dynamic>(
+      return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i4.CategoryDetailsPage(
           key: args.key,
@@ -66,7 +65,7 @@ abstract class $AppRouter extends _i11.RootStackRouter {
       );
     },
     CheckoutRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
+      return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i5.CheckoutPage(),
       );
@@ -74,14 +73,14 @@ abstract class $AppRouter extends _i11.RootStackRouter {
     HomeRoute.name: (routeData) {
       final args =
           routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
-      return _i11.AutoRoutePage<dynamic>(
+      return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i6.HomePage(key: args.key),
       );
     },
     OrderDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<OrderDetailsRouteArgs>();
-      return _i11.AutoRoutePage<dynamic>(
+      return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i7.OrderDetailsPage(
           key: args.key,
@@ -92,14 +91,14 @@ abstract class $AppRouter extends _i11.RootStackRouter {
     OrdersRoute.name: (routeData) {
       final args = routeData.argsAs<OrdersRouteArgs>(
           orElse: () => const OrdersRouteArgs());
-      return _i11.AutoRoutePage<dynamic>(
+      return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i8.OrdersPage(key: args.key),
       );
     },
     ProductDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<ProductDetailsRouteArgs>();
-      return _i11.AutoRoutePage<dynamic>(
+      return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i9.ProductDetailsPage(
           key: args.key,
@@ -107,24 +106,16 @@ abstract class $AppRouter extends _i11.RootStackRouter {
         ),
       );
     },
-    SplashRoute.name: (routeData) {
-      final args = routeData.argsAs<SplashRouteArgs>(
-          orElse: () => const SplashRouteArgs());
-      return _i11.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i10.SplashPage(key: args.key),
-      );
-    },
   };
 }
 
 /// generated route for
 /// [_i1.BannerDetailsPage]
-class BannerDetailsRoute extends _i11.PageRouteInfo<BannerDetailsRouteArgs> {
+class BannerDetailsRoute extends _i10.PageRouteInfo<BannerDetailsRouteArgs> {
   BannerDetailsRoute({
-    _i12.Key? key,
-    required _i13.HomeBanner banner,
-    List<_i11.PageRouteInfo>? children,
+    _i11.Key? key,
+    required _i12.HomeBanner banner,
+    List<_i10.PageRouteInfo>? children,
   }) : super(
           BannerDetailsRoute.name,
           args: BannerDetailsRouteArgs(
@@ -136,8 +127,8 @@ class BannerDetailsRoute extends _i11.PageRouteInfo<BannerDetailsRouteArgs> {
 
   static const String name = 'BannerDetailsRoute';
 
-  static const _i11.PageInfo<BannerDetailsRouteArgs> page =
-      _i11.PageInfo<BannerDetailsRouteArgs>(name);
+  static const _i10.PageInfo<BannerDetailsRouteArgs> page =
+      _i10.PageInfo<BannerDetailsRouteArgs>(name);
 }
 
 class BannerDetailsRouteArgs {
@@ -146,9 +137,9 @@ class BannerDetailsRouteArgs {
     required this.banner,
   });
 
-  final _i12.Key? key;
+  final _i11.Key? key;
 
-  final _i13.HomeBanner banner;
+  final _i12.HomeBanner banner;
 
   @override
   String toString() {
@@ -158,10 +149,10 @@ class BannerDetailsRouteArgs {
 
 /// generated route for
 /// [_i2.CartPage]
-class CartRoute extends _i11.PageRouteInfo<CartRouteArgs> {
+class CartRoute extends _i10.PageRouteInfo<CartRouteArgs> {
   CartRoute({
-    _i12.Key? key,
-    List<_i11.PageRouteInfo>? children,
+    _i11.Key? key,
+    List<_i10.PageRouteInfo>? children,
   }) : super(
           CartRoute.name,
           args: CartRouteArgs(key: key),
@@ -170,14 +161,14 @@ class CartRoute extends _i11.PageRouteInfo<CartRouteArgs> {
 
   static const String name = 'CartRoute';
 
-  static const _i11.PageInfo<CartRouteArgs> page =
-      _i11.PageInfo<CartRouteArgs>(name);
+  static const _i10.PageInfo<CartRouteArgs> page =
+      _i10.PageInfo<CartRouteArgs>(name);
 }
 
 class CartRouteArgs {
   const CartRouteArgs({this.key});
 
-  final _i12.Key? key;
+  final _i11.Key? key;
 
   @override
   String toString() {
@@ -187,8 +178,8 @@ class CartRouteArgs {
 
 /// generated route for
 /// [_i3.CategoriesPage]
-class CategoriesRoute extends _i11.PageRouteInfo<void> {
-  const CategoriesRoute({List<_i11.PageRouteInfo>? children})
+class CategoriesRoute extends _i10.PageRouteInfo<void> {
+  const CategoriesRoute({List<_i10.PageRouteInfo>? children})
       : super(
           CategoriesRoute.name,
           initialChildren: children,
@@ -196,17 +187,17 @@ class CategoriesRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'CategoriesRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i4.CategoryDetailsPage]
 class CategoryDetailsRoute
-    extends _i11.PageRouteInfo<CategoryDetailsRouteArgs> {
+    extends _i10.PageRouteInfo<CategoryDetailsRouteArgs> {
   CategoryDetailsRoute({
-    _i12.Key? key,
-    required _i14.ProductCategory category,
-    List<_i11.PageRouteInfo>? children,
+    _i11.Key? key,
+    required _i13.ProductCategory category,
+    List<_i10.PageRouteInfo>? children,
   }) : super(
           CategoryDetailsRoute.name,
           args: CategoryDetailsRouteArgs(
@@ -218,8 +209,8 @@ class CategoryDetailsRoute
 
   static const String name = 'CategoryDetailsRoute';
 
-  static const _i11.PageInfo<CategoryDetailsRouteArgs> page =
-      _i11.PageInfo<CategoryDetailsRouteArgs>(name);
+  static const _i10.PageInfo<CategoryDetailsRouteArgs> page =
+      _i10.PageInfo<CategoryDetailsRouteArgs>(name);
 }
 
 class CategoryDetailsRouteArgs {
@@ -228,9 +219,9 @@ class CategoryDetailsRouteArgs {
     required this.category,
   });
 
-  final _i12.Key? key;
+  final _i11.Key? key;
 
-  final _i14.ProductCategory category;
+  final _i13.ProductCategory category;
 
   @override
   String toString() {
@@ -240,8 +231,8 @@ class CategoryDetailsRouteArgs {
 
 /// generated route for
 /// [_i5.CheckoutPage]
-class CheckoutRoute extends _i11.PageRouteInfo<void> {
-  const CheckoutRoute({List<_i11.PageRouteInfo>? children})
+class CheckoutRoute extends _i10.PageRouteInfo<void> {
+  const CheckoutRoute({List<_i10.PageRouteInfo>? children})
       : super(
           CheckoutRoute.name,
           initialChildren: children,
@@ -249,15 +240,15 @@ class CheckoutRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'CheckoutRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i6.HomePage]
-class HomeRoute extends _i11.PageRouteInfo<HomeRouteArgs> {
+class HomeRoute extends _i10.PageRouteInfo<HomeRouteArgs> {
   HomeRoute({
-    _i12.Key? key,
-    List<_i11.PageRouteInfo>? children,
+    _i11.Key? key,
+    List<_i10.PageRouteInfo>? children,
   }) : super(
           HomeRoute.name,
           args: HomeRouteArgs(key: key),
@@ -266,14 +257,14 @@ class HomeRoute extends _i11.PageRouteInfo<HomeRouteArgs> {
 
   static const String name = 'HomeRoute';
 
-  static const _i11.PageInfo<HomeRouteArgs> page =
-      _i11.PageInfo<HomeRouteArgs>(name);
+  static const _i10.PageInfo<HomeRouteArgs> page =
+      _i10.PageInfo<HomeRouteArgs>(name);
 }
 
 class HomeRouteArgs {
   const HomeRouteArgs({this.key});
 
-  final _i12.Key? key;
+  final _i11.Key? key;
 
   @override
   String toString() {
@@ -283,11 +274,11 @@ class HomeRouteArgs {
 
 /// generated route for
 /// [_i7.OrderDetailsPage]
-class OrderDetailsRoute extends _i11.PageRouteInfo<OrderDetailsRouteArgs> {
+class OrderDetailsRoute extends _i10.PageRouteInfo<OrderDetailsRouteArgs> {
   OrderDetailsRoute({
-    _i12.Key? key,
-    required _i15.Order order,
-    List<_i11.PageRouteInfo>? children,
+    _i11.Key? key,
+    required _i14.Order order,
+    List<_i10.PageRouteInfo>? children,
   }) : super(
           OrderDetailsRoute.name,
           args: OrderDetailsRouteArgs(
@@ -299,8 +290,8 @@ class OrderDetailsRoute extends _i11.PageRouteInfo<OrderDetailsRouteArgs> {
 
   static const String name = 'OrderDetailsRoute';
 
-  static const _i11.PageInfo<OrderDetailsRouteArgs> page =
-      _i11.PageInfo<OrderDetailsRouteArgs>(name);
+  static const _i10.PageInfo<OrderDetailsRouteArgs> page =
+      _i10.PageInfo<OrderDetailsRouteArgs>(name);
 }
 
 class OrderDetailsRouteArgs {
@@ -309,9 +300,9 @@ class OrderDetailsRouteArgs {
     required this.order,
   });
 
-  final _i12.Key? key;
+  final _i11.Key? key;
 
-  final _i15.Order order;
+  final _i14.Order order;
 
   @override
   String toString() {
@@ -321,10 +312,10 @@ class OrderDetailsRouteArgs {
 
 /// generated route for
 /// [_i8.OrdersPage]
-class OrdersRoute extends _i11.PageRouteInfo<OrdersRouteArgs> {
+class OrdersRoute extends _i10.PageRouteInfo<OrdersRouteArgs> {
   OrdersRoute({
-    _i12.Key? key,
-    List<_i11.PageRouteInfo>? children,
+    _i11.Key? key,
+    List<_i10.PageRouteInfo>? children,
   }) : super(
           OrdersRoute.name,
           args: OrdersRouteArgs(key: key),
@@ -333,14 +324,14 @@ class OrdersRoute extends _i11.PageRouteInfo<OrdersRouteArgs> {
 
   static const String name = 'OrdersRoute';
 
-  static const _i11.PageInfo<OrdersRouteArgs> page =
-      _i11.PageInfo<OrdersRouteArgs>(name);
+  static const _i10.PageInfo<OrdersRouteArgs> page =
+      _i10.PageInfo<OrdersRouteArgs>(name);
 }
 
 class OrdersRouteArgs {
   const OrdersRouteArgs({this.key});
 
-  final _i12.Key? key;
+  final _i11.Key? key;
 
   @override
   String toString() {
@@ -350,11 +341,11 @@ class OrdersRouteArgs {
 
 /// generated route for
 /// [_i9.ProductDetailsPage]
-class ProductDetailsRoute extends _i11.PageRouteInfo<ProductDetailsRouteArgs> {
+class ProductDetailsRoute extends _i10.PageRouteInfo<ProductDetailsRouteArgs> {
   ProductDetailsRoute({
-    _i12.Key? key,
+    _i11.Key? key,
     required String productId,
-    List<_i11.PageRouteInfo>? children,
+    List<_i10.PageRouteInfo>? children,
   }) : super(
           ProductDetailsRoute.name,
           args: ProductDetailsRouteArgs(
@@ -366,8 +357,8 @@ class ProductDetailsRoute extends _i11.PageRouteInfo<ProductDetailsRouteArgs> {
 
   static const String name = 'ProductDetailsRoute';
 
-  static const _i11.PageInfo<ProductDetailsRouteArgs> page =
-      _i11.PageInfo<ProductDetailsRouteArgs>(name);
+  static const _i10.PageInfo<ProductDetailsRouteArgs> page =
+      _i10.PageInfo<ProductDetailsRouteArgs>(name);
 }
 
 class ProductDetailsRouteArgs {
@@ -376,41 +367,12 @@ class ProductDetailsRouteArgs {
     required this.productId,
   });
 
-  final _i12.Key? key;
+  final _i11.Key? key;
 
   final String productId;
 
   @override
   String toString() {
     return 'ProductDetailsRouteArgs{key: $key, productId: $productId}';
-  }
-}
-
-/// generated route for
-/// [_i10.SplashPage]
-class SplashRoute extends _i11.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({
-    _i12.Key? key,
-    List<_i11.PageRouteInfo>? children,
-  }) : super(
-          SplashRoute.name,
-          args: SplashRouteArgs(key: key),
-          initialChildren: children,
-        );
-
-  static const String name = 'SplashRoute';
-
-  static const _i11.PageInfo<SplashRouteArgs> page =
-      _i11.PageInfo<SplashRouteArgs>(name);
-}
-
-class SplashRouteArgs {
-  const SplashRouteArgs({this.key});
-
-  final _i12.Key? key;
-
-  @override
-  String toString() {
-    return 'SplashRouteArgs{key: $key}';
   }
 }

@@ -8,15 +8,31 @@ final router = AppRouter();
 class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: SplashRoute.page, initial: true),
-        AutoRoute(page: HomeRoute.page),
-        AutoRoute(page: CategoriesRoute.page),
-        AutoRoute(page: CategoryDetailsRoute.page),
-        AutoRoute(page: ProductDetailsRoute.page),
-        AutoRoute(page: CartRoute.page),
-        AutoRoute(page: OrdersRoute.page),
-        AutoRoute(page: OrderDetailsRoute.page),
-        AutoRoute(page: CheckoutRoute.page),
-        AutoRoute(page: BannerDetailsRoute.page),
+        AutoRoute(
+          page: HomeRoute.page,
+          path: '/',
+        ),
+        AutoRoute(
+          page: CategoriesRoute.page,
+          path: '/categories',
+          children: [
+            AutoRoute(
+              page: CategoryDetailsRoute.page,
+              path: 'details',
+            ),
+          ],
+        ),
+        AutoRoute(
+          page: ProductDetailsRoute.page,
+          path: '/product-details',
+        ),
+        AutoRoute(
+          page: CartRoute.page,
+          path: '/cart',
+        ),
+        AutoRoute(
+          page: CheckoutRoute.page,
+          path: '/checkout',
+        ),
       ];
 }
