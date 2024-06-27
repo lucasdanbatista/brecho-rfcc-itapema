@@ -10,6 +10,7 @@ dependencies:
   auto_route: 7.9.2
   collection: ^1.18.0
   dio: ^5.4.0
+  easy_mask: ^2.0.1
   flutter:
     sdk: flutter
   flutter_mobx: ^2.2.0+2

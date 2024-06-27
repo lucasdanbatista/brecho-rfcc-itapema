@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'cart_manager.dart';
 import 'environment.dart';
 import 'module.dart';
+import 'repositories/checkout_repository.dart';
 import 'repositories/home_repository.dart';
 import 'repositories/order_repository.dart';
 import 'repositories/product_category_repository.dart';
@@ -13,6 +14,9 @@ class CoreModule implements Module {
   Future<void> init(GetIt i) async {
     i.registerLazySingleton(() => Environment.auto());
     i.registerLazySingleton<CartManager>(() => InMemoryCartManager(i.get()));
+    i.registerLazySingleton<CheckoutRepository>(
+      () => DefaultCheckoutRepository(i.get()),
+    );
     i.registerLazySingleton<ProductRepository>(
       () => DefaultProductRepository(i.get(), i.get(), i.get()),
     );

@@ -13,9 +13,6 @@ CartDTO _$CartDTOFromJson(Map<String, dynamic> json) => CartDTO(
           .toList(),
       subtotal: (json['subtotal'] as num?)?.toDouble(),
       total: (json['total'] as num?)?.toDouble(),
-      checkoutUrl: json['checkoutUrl'] == null
-          ? null
-          : Uri.parse(json['checkoutUrl'] as String),
     );
 
 Map<String, dynamic> _$CartDTOToJson(CartDTO instance) => <String, dynamic>{
@@ -23,5 +20,4 @@ Map<String, dynamic> _$CartDTOToJson(CartDTO instance) => <String, dynamic>{
       'lines': instance.lines,
       'subtotal': instance.subtotal,
       'total': instance.total,
-      'checkoutUrl': instance.checkoutUrl?.toString(),
     };

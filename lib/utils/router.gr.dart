@@ -66,13 +66,9 @@ abstract class $AppRouter extends _i11.RootStackRouter {
       );
     },
     CheckoutRoute.name: (routeData) {
-      final args = routeData.argsAs<CheckoutRouteArgs>();
       return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i5.CheckoutPage(
-          key: args.key,
-          checkoutUrl: args.checkoutUrl,
-        ),
+        child: const _i5.CheckoutPage(),
       );
     },
     HomeRoute.name: (routeData) {
@@ -244,40 +240,16 @@ class CategoryDetailsRouteArgs {
 
 /// generated route for
 /// [_i5.CheckoutPage]
-class CheckoutRoute extends _i11.PageRouteInfo<CheckoutRouteArgs> {
-  CheckoutRoute({
-    _i12.Key? key,
-    required Uri checkoutUrl,
-    List<_i11.PageRouteInfo>? children,
-  }) : super(
+class CheckoutRoute extends _i11.PageRouteInfo<void> {
+  const CheckoutRoute({List<_i11.PageRouteInfo>? children})
+      : super(
           CheckoutRoute.name,
-          args: CheckoutRouteArgs(
-            key: key,
-            checkoutUrl: checkoutUrl,
-          ),
           initialChildren: children,
         );
 
   static const String name = 'CheckoutRoute';
 
-  static const _i11.PageInfo<CheckoutRouteArgs> page =
-      _i11.PageInfo<CheckoutRouteArgs>(name);
-}
-
-class CheckoutRouteArgs {
-  const CheckoutRouteArgs({
-    this.key,
-    required this.checkoutUrl,
-  });
-
-  final _i12.Key? key;
-
-  final Uri checkoutUrl;
-
-  @override
-  String toString() {
-    return 'CheckoutRouteArgs{key: $key, checkoutUrl: $checkoutUrl}';
-  }
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for

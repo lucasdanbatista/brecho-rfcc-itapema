@@ -23,7 +23,6 @@ abstract class CartViewModelBase with Store {
       lines: _cartManager.currentCart.lines,
       subtotal: _cartManager.currentCart.subtotal,
       total: _cartManager.currentCart.total,
-      checkoutUrl: _cartManager.currentCart.checkoutUrl,
     );
   }
 

@@ -30,7 +30,6 @@ class InMemoryCartManager implements CartManager {
       lines: [],
       subtotal: 0,
       total: 0,
-      checkoutUrl: Uri.parse('http://google.com'),
     );
   }
 

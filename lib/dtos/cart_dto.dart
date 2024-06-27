@@ -10,14 +10,12 @@ class CartDTO {
   List<CartLineDTO>? lines;
   double? subtotal;
   double? total;
-  Uri? checkoutUrl;
 
   CartDTO({
     this.id,
     this.lines,
     this.subtotal,
     this.total,
-    this.checkoutUrl,
   });
 
   factory CartDTO.fromJson(Map<String, dynamic> json) =>

@@ -15,7 +15,6 @@ class CartMapper implements EntityMapper<CartDTO, Cart> {
       lines: it.lines?.map(_lineMapper.toEntity).toList(),
       subtotal: it.subtotal,
       total: it.total,
-      checkoutUrl: it.checkoutUrl,
     );
   }
 }
