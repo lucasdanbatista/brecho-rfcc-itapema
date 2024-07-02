@@ -15,7 +15,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: CategoriesRoute.page,
           path: '/categories',
-          children: [],
         ),
         AutoRoute(
           page: CategoryDetailsRoute.page,

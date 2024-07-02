@@ -13,7 +13,7 @@ class _HomeProvider implements HomeProvider {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= '/v1/home';
+    baseUrl ??= '/';
   }
 
   final Dio _dio;

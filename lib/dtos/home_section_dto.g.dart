@@ -12,10 +12,14 @@ HomeSectionDTO _$HomeSectionDTOFromJson(Map<String, dynamic> json) =>
       products: (json['products'] as List<dynamic>?)
           ?.map((e) => ProductDTO.fromJson(e as Map<String, dynamic>))
           .toList(),
+      productIds: (json['productIds'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList(),
     );
 
 Map<String, dynamic> _$HomeSectionDTOToJson(HomeSectionDTO instance) =>
     <String, dynamic>{
       'title': instance.title,
+      'productIds': instance.productIds,
       'products': instance.products,
     };

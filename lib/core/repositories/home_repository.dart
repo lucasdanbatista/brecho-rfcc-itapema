@@ -1,6 +1,7 @@
 import '../../mappers/home_banner_mapper.dart';
 import '../../mappers/home_section_mapper.dart';
 import '../../providers/home_provider.dart';
+import '../../providers/product_provider.dart';
 import '../entities/home_banner.dart';
 import '../entities/home_section.dart';
 
@@ -14,11 +15,13 @@ class DefaultHomeRepository implements HomeRepository {
   final HomeProvider _provider;
   final HomeSectionMapper _sectionMapper;
   final HomeBannerMapper _bannerMapper;
+  final ProductProvider _productProvider;
 
   DefaultHomeRepository(
     this._provider,
     this._sectionMapper,
     this._bannerMapper,
+    this._productProvider,
   );
 
   @override
@@ -29,7 +32,14 @@ class DefaultHomeRepository implements HomeRepository {
 
   @override
   Future<List<HomeSection>> getSections() async {
-    final response = await _provider.getSections();
-    return response.map(_sectionMapper.toEntity).toList();
+    final sections = await _provider.getSections();
+    for (final section in sections) {
+      section.products = await Future.wait(
+        section.productIds!.map(
+          (e) => _productProvider.findProductById(e.toString()),
+        ),
+      );
+    }
+    return sections.map(_sectionMapper.toEntity).toList();
   }
 }
