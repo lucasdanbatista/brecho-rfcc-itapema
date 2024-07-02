@@ -41,7 +41,10 @@ class DefaultProductRepository implements ProductRepository {
   @override
   Future<List<Product>> findAllByCategoryId(String id) async {
     final response = await _categoryProvider.findAllProductsByCategoryId(id);
-    return response.map(_mapper.toEntity).toList();
+    final products = await Future.wait(
+      response.map((e) => _productProvider.findProductById(e.id!)),
+    );
+    return products.map(_mapper.toEntity).toList();
   }
 
   @override

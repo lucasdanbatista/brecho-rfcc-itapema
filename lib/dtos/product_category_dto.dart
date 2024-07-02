@@ -5,6 +5,7 @@ part 'product_category_dto.g.dart';
 @JsonSerializable()
 class ProductCategoryDTO {
   String? id;
+  @JsonKey(name: 'name')
   String? title;
   Uri? image;
 

@@ -15,12 +15,11 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: CategoriesRoute.page,
           path: '/categories',
-          children: [
-            AutoRoute(
-              page: CategoryDetailsRoute.page,
-              path: 'details',
-            ),
-          ],
+          children: [],
+        ),
+        AutoRoute(
+          page: CategoryDetailsRoute.page,
+          path: '/category-details',
         ),
         AutoRoute(
           page: ProductDetailsRoute.page,

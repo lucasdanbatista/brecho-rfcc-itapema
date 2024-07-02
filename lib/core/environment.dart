@@ -6,7 +6,7 @@ abstract interface class Environment {
 
 class ProductionEnvironment implements Environment {
   @override
-  final apiBaseUrl = Uri.parse('https://rfccitapema.lucasbatista.me');
+  final apiBaseUrl = Uri.parse('https://rfcc.azurewebsites.net');
 }
 
 class StagingEnvironment implements Environment {
