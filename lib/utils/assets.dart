@@ -16,5 +16,5 @@ class ImageAssets {
 class ColorAssets {
   ColorAssets._();
 
-  static const storeLogoTransparentBackgroundColor = Color(0xFF213458);
+  static const storeLogoTransparentBackgroundColor = Color(0xFFFFE3EF);
 }

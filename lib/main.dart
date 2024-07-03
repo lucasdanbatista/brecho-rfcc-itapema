@@ -46,6 +46,9 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFFFFE3EF),
+        ),
         appBarTheme: const AppBarTheme(
           centerTitle: true,
         ),

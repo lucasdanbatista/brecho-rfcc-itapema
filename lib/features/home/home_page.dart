@@ -62,7 +62,7 @@ class HomePage extends StatelessWidget with InitStateMixin {
         ),
       ),
       appBar: AppBar(
-        title: const Text('Vienna'),
+        title: const Text('Brechó RFCC Itapema'),
         actions: [
           IconButton(
             onPressed: () => Navigator.of(context).push(
