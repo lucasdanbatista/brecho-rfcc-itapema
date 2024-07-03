@@ -117,6 +117,7 @@ class HomePage extends StatelessWidget with InitStateMixin {
                                     clipBehavior: Clip.antiAlias,
                                     shape: const CircleBorder(),
                                     child: Ink.image(
+                                      fit: BoxFit.cover,
                                       image: NetworkImage(
                                         category.image.toString(),
                                       ),
