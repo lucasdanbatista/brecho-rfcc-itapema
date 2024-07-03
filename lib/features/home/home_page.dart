@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
-import '../cart/cart_view_model.dart';
 import '../../utils/assets.dart';
 import '../../utils/init_state_mixin.dart';
 import '../../utils/router.gr.dart';
 import '../../widgets/cards/product_card.dart';
 import '../../widgets/icon_buttons/cart_icon_button.dart';
+import '../cart/cart_view_model.dart';
 import '../categories/categories_view_model.dart';
-import '../search/search_page.dart';
 import 'home_view_model.dart';
 
 @RoutePage()
@@ -62,26 +61,8 @@ class HomePage extends StatelessWidget with InitStateMixin {
         ),
       ),
       appBar: AppBar(
-        title: const Text('Brechó RFCC Itapema'),
+        title: const Text('RFCC Itapema'),
         actions: [
-          IconButton(
-            onPressed: () => Navigator.of(context).push(
-              PageRouteBuilder(
-                pageBuilder: (_, __, ___) => const SearchPage(),
-                transitionsBuilder: (_, animation, ___, child) =>
-                    SlideTransition(
-                  position: animation.drive(
-                    Tween(
-                      begin: const Offset(0, 1),
-                      end: Offset.zero,
-                    ),
-                  ),
-                  child: child,
-                ),
-              ),
-            ),
-            icon: const Icon(Icons.search),
-          ),
           CartIconButton(),
         ],
       ),
